@@ -1,0 +1,39 @@
+﻿<div class="row">
+    <div class="col">
+        <table class="board">
+            @for (int row = 0; row < Game.MaxRows; row++)
+            {
+                <tr>
+                    @for (int column = 0; column < Game.MaxColumns; column++)
+                    {
+                        var cell = CurrentGame.Cells[row, column];
+
+                        <td class="cell" @onclick="() => Flip(cell)">
+                            <div class="@(cell.IsLit ? "lit" : "unlit")"></div>
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@code {
+    public Game CurrentGame { get; set; }
+
+    protected override void OnInitialized()
+    {
+        CurrentGame = new Game();
+        CurrentGame.CreateBoard();
+    }
+
+    void Flip(Cell cell)
+    {
+        CurrentGame.Flip(cell.Row, cell.Column);
+
+        if (CurrentGame.HasWon)
+        {
+
+        }
+    }
+}
