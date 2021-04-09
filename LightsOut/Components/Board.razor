@@ -18,13 +18,22 @@
     </div>
 </div>
 
+@if (!IsPlaying)
+{
+    <div class="row">
+        <div class="column">
+            <button class="btn btn-primary" @onclick="@Start">Reset</button>
+        </div>
+    </div>
+}
+
 @code {
+    public bool IsPlaying { get; set; }
     public Game CurrentGame { get; set; }
 
     protected override void OnInitialized()
     {
-        CurrentGame = new Game();
-        CurrentGame.CreateBoard();
+        Start();
     }
 
     void Flip(Cell cell)
@@ -33,7 +42,14 @@
 
         if (CurrentGame.HasWon)
         {
-
+            IsPlaying = false;
         }
+    }
+
+    void Start()
+    {
+        CurrentGame = new Game();
+        CurrentGame.CreateBoard();
+        IsPlaying = true;
     }
 }
