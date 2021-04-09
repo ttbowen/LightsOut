@@ -48,3 +48,26 @@ a, .btn-link {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+.game {
+    margin: auto;
+}
+
+.cell {
+    height: 100px;
+    width: 100px;
+    border: 1px #ddd;
+    transition: background-color 0.7s ease;
+}
+
+.lit {
+    width: 100%;
+    height: 100%;
+    background-color: #ffd800;
+}
+
+.unlit {
+    width: 100%;
+    height: 100%;
+    background-color: #808080;
+}
